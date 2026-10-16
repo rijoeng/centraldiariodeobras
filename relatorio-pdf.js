@@ -1,4 +1,6 @@
-/* Central Diário de Obra (Rijo) · relatorio-pdf.js · v0.7.1 (16/10/2026)
+/* Central Diário de Obra (Rijo) · relatorio-pdf.js · v0.7.2 (16/10/2026)
+ * v0.7.2: dados do rodapé conforme o papel timbrado R2 (10/10/2026): os dois telefones, contato@, endereço com a Torre 4
+ *   e o site. O layout continua o da v0.7.0.
  * v0.7.1: rodapé com razão social, CNPJ, telefone, e-mail e endereço da Rijo.
  *
  * Relatório diário de obra (RDO) em PDF, no papel timbrado da Rijo, gerado no próprio navegador (jsPDF).
@@ -19,17 +21,19 @@
  */
 (function (global) {
   'use strict';
-  var VERSAO = '0.7.1';
+  var VERSAO = '0.7.2';
 
   /* ======================= DADOS DA EMPRESA (papel timbrado) ======================= */
-  // Preencha e suba o arquivo de novo no GitHub: o rodapé de todos os PDFs muda junto. Campo vazio não sai.
+  // Dados do "Papel Timbrado - Rijo Engenharia_R2-10-10-26.pdf". Mudou algo? Troque aqui, rode o montar.py e suba o
+  // arquivo de novo no GitHub: o rodapé de todos os PDFs muda junto. Campo vazio não sai.
+  // Rodapé: linha 1 = razão social · CNPJ · telefones · e-mail; linha 2 = endereço · site.
   var TIMBRE = {
     razao: 'Rijo Engenharia Ltda',
     cnpj: '35.086.226/0001-31',
-    endereco: 'Av. Luís Viana Filho, 13223, Ed. Hangar Business Park, Hangar 4, Sala 0012, São Cristóvão, Salvador/BA, CEP 41500-300',
-    telefone: '(74) 3535-0246',
-    email: 'adm@rijoeng.com.br',
-    site: '',
+    endereco: 'Av. Luís Viana Filho, nº 13.223, Ed. Hangar Business Park, Torre 4, Sala 0012, São Cristóvão, Salvador/BA, CEP 41.500-300',
+    telefone: '(87) 98113-8782 · (74) 99953-1106',
+    email: 'contato@rijoeng.com.br',
+    site: 'www.rijoeng.com.br',
     certificacoes: 'Sistema de Gestão da Qualidade ISO 9001:2015 · PBQP-H',
     formulario: ''            // código do formulário no SGQ (ex.: 'FOR-OBR-03 · Rev. 01'); vazio = não sai
   };
@@ -198,9 +202,9 @@
 
   function rodapes(doc, P, ctx) {
     var n = doc.getNumberOfPages(), em = emissao(ctx);
-    // linha 1: empresa, CNPJ e contatos; linha 2: endereço (cada uma numa linha, para não cortar no meio)
-    var dados1 = [TIMBRE.razao && TIMBRE.cnpj ? TIMBRE.razao + ' · CNPJ ' + TIMBRE.cnpj : (TIMBRE.cnpj ? 'CNPJ ' + TIMBRE.cnpj : ''), TIMBRE.telefone, TIMBRE.email, TIMBRE.site].filter(Boolean).join(' · ');
-    var dados = [dados1, TIMBRE.endereco].filter(Boolean);
+    // linha 1: empresa, CNPJ, telefones e e-mail; linha 2: endereço e site (cada uma numa linha, para não cortar no meio)
+    var dados1 = [TIMBRE.razao && TIMBRE.cnpj ? TIMBRE.razao + ' · CNPJ ' + TIMBRE.cnpj : (TIMBRE.cnpj ? 'CNPJ ' + TIMBRE.cnpj : ''), TIMBRE.telefone, TIMBRE.email].filter(Boolean).join(' · ');
+    var dados = [dados1, [TIMBRE.endereco, TIMBRE.site].filter(Boolean).join(' · ')].filter(Boolean);
     for (var i = 1; i <= n; i++) {
       doc.setPage(i);
       var ref = (P.meta[i] && P.meta[i].ref) || '';
