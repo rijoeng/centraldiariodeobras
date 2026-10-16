@@ -1,4 +1,5 @@
-/* Central Diário de Obra (Rijo) · relatorio-pdf.js · v0.7.0 (16/10/2026)
+/* Central Diário de Obra (Rijo) · relatorio-pdf.js · v0.7.1 (16/10/2026)
+ * v0.7.1: rodapé com razão social, CNPJ, telefone, e-mail e endereço da Rijo.
  *
  * Relatório diário de obra (RDO) em PDF, no papel timbrado da Rijo, gerado no próprio navegador (jsPDF).
  * As fotos vêm do acervo da Central (não dos links da Vobi, que davam erro no PDF da própria Vobi).
@@ -18,16 +19,16 @@
  */
 (function (global) {
   'use strict';
-  var VERSAO = '0.7.0';
+  var VERSAO = '0.7.1';
 
   /* ======================= DADOS DA EMPRESA (papel timbrado) ======================= */
   // Preencha e suba o arquivo de novo no GitHub: o rodapé de todos os PDFs muda junto. Campo vazio não sai.
   var TIMBRE = {
-    razao: 'Rijo Engenharia',
-    cnpj: '',                 // ex.: '00.000.000/0001-00'
-    endereco: '',             // ex.: 'Rua Tal, 123, Centro, Petrolina/PE, 56300-000'
-    telefone: '',             // ex.: '(87) 9 9999-9999'
-    email: '',
+    razao: 'Rijo Engenharia Ltda',
+    cnpj: '35.086.226/0001-31',
+    endereco: 'Av. Luís Viana Filho, 13223, Ed. Hangar Business Park, Hangar 4, Sala 0012, São Cristóvão, Salvador/BA, CEP 41500-300',
+    telefone: '(74) 3535-0246',
+    email: 'adm@rijoeng.com.br',
     site: '',
     certificacoes: 'Sistema de Gestão da Qualidade ISO 9001:2015 · PBQP-H',
     formulario: ''            // código do formulário no SGQ (ex.: 'FOR-OBR-03 · Rev. 01'); vazio = não sai
@@ -197,7 +198,9 @@
 
   function rodapes(doc, P, ctx) {
     var n = doc.getNumberOfPages(), em = emissao(ctx);
-    var dados = [TIMBRE.razao && TIMBRE.cnpj ? TIMBRE.razao + ' · CNPJ ' + TIMBRE.cnpj : (TIMBRE.cnpj ? 'CNPJ ' + TIMBRE.cnpj : ''), TIMBRE.endereco, TIMBRE.telefone, TIMBRE.email, TIMBRE.site].filter(Boolean).join(' · ');
+    // linha 1: empresa, CNPJ e contatos; linha 2: endereço (cada uma numa linha, para não cortar no meio)
+    var dados1 = [TIMBRE.razao && TIMBRE.cnpj ? TIMBRE.razao + ' · CNPJ ' + TIMBRE.cnpj : (TIMBRE.cnpj ? 'CNPJ ' + TIMBRE.cnpj : ''), TIMBRE.telefone, TIMBRE.email, TIMBRE.site].filter(Boolean).join(' · ');
+    var dados = [dados1, TIMBRE.endereco].filter(Boolean);
     for (var i = 1; i <= n; i++) {
       doc.setPage(i);
       var ref = (P.meta[i] && P.meta[i].ref) || '';
@@ -205,9 +208,12 @@
       fonte(doc, 'C7', 7.6, C.verde); doc.text('RIJO ENGENHARIA', MX, 282.8, { charSpace: 0.25 });
       var w0 = larg(doc, 'RIJO ENGENHARIA', 0.25);
       fonte(doc, 'B4', 7, C.texto2); doc.text(T(doc, '  ·  ' + TIMBRE.certificacoes), MX + w0, 282.8);
-      if (dados) {
+      if (dados.length) {
         fonte(doc, 'B4', 6.7, C.texto3);
-        quebrar(doc, dados, 118).slice(0, 2).forEach(function (l, k) { doc.text(l, MX, 286.4 + k * 3.2); });
+        var ls = [];
+        // a 1ª linha divide espaço com "Emitido em … por …"; a 2ª só com "Página X de Y", então vai até 154 mm
+        dados.forEach(function (d) { ls = ls.concat(quebrar(doc, d, ls.length ? 154 : 118)); });
+        ls.slice(0, 2).forEach(function (l, k) { doc.text(l, MX, 286.4 + k * 3.2); });
       }
       fonte(doc, 'B6', 7, C.texto2); doc.text(T(doc, ref), XR, 282.8, { align: 'right' });
       fonte(doc, 'B4', 6.4, C.texto3); doc.text(T(doc, em), XR, 286.3, { align: 'right' });
