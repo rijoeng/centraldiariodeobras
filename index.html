@@ -753,6 +753,93 @@
     .atr-leg .mudo { margin-left: 0; }
     .atr .acoes-a { width: 100%; } .atr .acoes-a .btn { flex: 1; }
   }
+
+  /* ---------- v0.7.4: obras e acessos (escritório vê; só o gestor altera) ---------- */
+  .ges .aviso-g { display: flex; gap: 10px; align-items: flex-start; background: var(--int-f); border: 1px solid #D3DDEA; color: var(--azul); border-radius: 10px; padding: 10px 12px; font-size: 14px; }
+  .ges .aviso-g svg { margin-top: 1px; }
+  .ges-tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--linha); overflow-x: auto; scrollbar-width: none; }
+  .ges-tabs::-webkit-scrollbar { display: none; }
+  .ges-tabs button { flex: none; border: 0; background: none; padding: 10px 12px; font-weight: 600; font-size: 14.5px; color: var(--texto-2); border-bottom: 2px solid transparent; margin-bottom: -1px; display: inline-flex; gap: 6px; align-items: center; }
+  .ges-tabs button[aria-selected="true"] { color: var(--verde); border-bottom-color: var(--verde-2); }
+  .ges-tabs b { font-weight: 600; color: var(--texto-3); font-variant-numeric: tabular-nums; }
+  .ges-filtro { display: flex; flex-direction: column; gap: 10px; }
+  .g-lista { display: grid; gap: 10px; }
+  .g-ob { background: var(--papel); border: 1px solid var(--linha); border-radius: var(--raio); padding: 12px 14px; display: grid; gap: 10px; box-shadow: var(--sombra); min-width: 0; }
+  .g-ob .t { display: flex; gap: 4px 10px; align-items: baseline; flex-wrap: wrap; min-width: 0; }
+  .g-ob .t b { font-family: var(--cond); font-weight: 700; color: var(--verde); font-size: 17px; }
+  .g-ob .t .n { font-weight: 600; min-width: 0; overflow-wrap: anywhere; flex: 1 1 200px; }
+  .g-ob .m { color: var(--texto-3); font-size: 13px; display: flex; gap: 4px 12px; flex-wrap: wrap; }
+  .g-ob .m .pil { font-size: 12px; padding: 1px 8px 1px 7px; }
+  .g-sws { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .sw { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: center; border: 1px solid var(--linha); border-radius: 10px; padding: 9px 10px; background: var(--papel-2); cursor: pointer; min-width: 0; }
+  .sw input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+  .sw .tr { width: 40px; height: 24px; border-radius: 99px; background: #B9C6BF; position: relative; transition: background .15s; flex: none; }
+  .sw .tr::after { content: ''; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25); transition: transform .15s; }
+  .sw input:checked + .tr { background: var(--verde-2); }
+  .sw input:checked + .tr::after { transform: translateX(16px); }
+  .sw input:focus-visible + .tr { outline: 2px solid var(--verde-2); outline-offset: 2px; }
+  .sw b { display: block; font-size: 14px; line-height: 1.25; }
+  .sw small { display: block; color: var(--texto-3); font-size: 12.5px; line-height: 1.3; }
+  .sw.on { border-color: #CFE3D6; background: var(--verde-3); }
+  .sw.dis { cursor: default; }
+  .sw.dis .tr { opacity: .55; }
+  .sw.salvando .tr { opacity: .45; }
+  .sw.salvando small::after { content: ' · gravando…'; }
+  .g-resp { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 13.5px; }
+  .g-resp .rt { color: var(--texto-3); font-weight: 600; font-size: 12.5px; }
+  .g-resp .tag { font-size: 12.5px; }
+  .g-resp .link { padding: 2px 0; font-size: 13.5px; display: inline-flex; gap: 4px; align-items: center; }
+  .g-resp .link svg { width: 15px; height: 15px; }
+  .g-alerta { font-size: 13px; color: var(--atencao); background: var(--atencao-f); border-radius: 8px; padding: 6px 10px; display: flex; gap: 6px; align-items: flex-start; }
+  .g-alerta svg { width: 15px; height: 15px; margin-top: 2px; }
+  .g-info { font-size: 13px; color: var(--texto-3); }
+  .g-p { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 4px 12px; align-items: center; width: 100%; text-align: left; border: 1px solid var(--linha); border-radius: var(--raio); background: var(--papel); padding: 10px 12px; box-shadow: var(--sombra); }
+  button.g-p:hover { border-color: var(--linha-forte); }
+  .g-p .eu { width: 40px; height: 40px; font-size: 14.5px; }
+  .g-p.ina .eu { background: var(--sem-f); color: var(--sem); }
+  .g-p .i { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .g-p .i b { font-weight: 600; font-size: 15px; }
+  .g-p .i small { color: var(--texto-3); font-size: 13px; overflow-wrap: anywhere; }
+  .g-p .tg { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+  .tag.ina { color: var(--sem); background: var(--sem-f); border-color: #D5DCD9; }
+  .tag.atn { color: var(--atencao); background: var(--atencao-f); border-color: #EFD9A3; }
+  .tag.esc { color: var(--azul); background: var(--azul-f); border-color: #CADCEB; }
+  .g-hist { display: flex; flex-direction: column; background: var(--papel); border: 1px solid var(--linha); border-radius: var(--raio); }
+  .g-hist div { padding: 10px 14px; border-top: 1px solid var(--linha); display: flex; flex-direction: column; gap: 2px; font-size: 14px; }
+  .g-hist div:first-child { border-top: 0; }
+  .g-hist small { color: var(--texto-3); font-size: 12.5px; }
+  .sheet .g-cx { border: 1px solid var(--linha); border-radius: 10px; padding: 4px 12px; max-height: 42vh; overflow: auto; background: var(--papel); }
+  .sheet .g-cx .chk { border-top: 1px solid var(--linha); padding: 8px 0; }
+  .sheet .g-cx .chk:first-child { border-top: 0; }
+  .sheet .g-cx .chk.ina b { color: var(--texto-3); }
+  .sheet .g-cx .sub { font-family: var(--cond); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--texto-3); padding: 10px 0 4px; }
+  .sheet .g-mais { align-self: flex-start; }
+  .sheet .sw { background: var(--papel); }
+  .sheet .erro-g { color: var(--critico); font-size: 13.5px; font-weight: 600; }
+  .sheet input[type="tel"].in, .sheet input[type="text"].in { min-height: 44px; }
+  .liberar { display: flex; gap: 8px 12px; align-items: center; flex-wrap: wrap; font-size: 13.5px; color: var(--texto-2); }
+  @media (max-width: 640px) {
+    .g-sws { grid-template-columns: 1fr; }
+    .g-p { grid-template-columns: 40px minmax(0, 1fr); }
+    .g-p .tg { grid-column: 2; justify-content: flex-start; }
+  }
+  /* v0.7.4: cabeçalho do computador com as 5 abas do escritório: marca, abas e botões não se sobrepõem de 980 a 1500 px */
+  @media (min-width: 980px) and (max-width: 1499px) {
+    .cab:has(#abas .so-esc:not([hidden])) #cabTv { display: none; }   /* "Passar na TV" continua no menu da pessoa */
+  }
+  @media (min-width: 980px) and (max-width: 1279px) {
+    .abas { gap: 2px; margin-left: 4px; }
+    .abas button { padding: 8px 9px; }
+    .abas button svg { display: none; }
+  }
+  @media (min-width: 980px) and (max-width: 1099px) {
+    .cab { gap: 10px; }
+    .cab .sis-sub { display: none; }
+    .cab .sis-nome { font-size: 12.5px; letter-spacing: .06em; line-height: 1.12; }
+    .cab .sis-nome span { display: block; }
+    .cab .sis-nome span:first-child { font-size: 10px; letter-spacing: .16em; }
+    .cab .so-larga { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -768,11 +855,12 @@
     <button type="button" data-tab="relatorios"><svg class="i" data-i="rel"></svg>Relatórios</button>
     <button type="button" data-tab="fotos"><svg class="i" data-i="grade"></svg>Fotos</button>
     <button type="button" data-tab="atrasos" class="so-esc" hidden><svg class="i" data-i="painel"></svg>Atrasos</button>
+    <button type="button" data-tab="gestao" class="so-esc" hidden><svg class="i" data-i="ajustes"></svg>Gestão</button>
   </nav>
   <div class="cab-dir" id="cabDir" hidden>
     <span class="atu" id="atu" role="status" hidden><i></i><span>Atualizando</span></span>
     <button type="button" class="btn peq btn-cab" id="cabTv"><svg class="i" data-i="tv"></svg>Passar na TV</button>
-    <button type="button" class="btn peq pri btn-cab" id="cabLancar"><svg class="i" data-i="mais"></svg>Lançar diário</button>
+    <button type="button" class="btn peq pri btn-cab" id="cabLancar"><svg class="i" data-i="mais"></svg>Lançar<span class="so-larga"> diário</span></button>
     <button type="button" class="eu" id="eu" aria-label="Sua conta"></button>
   </div>
 </header>
@@ -787,7 +875,7 @@
 </nav>
 <div id="camada"></div>
 <script>
-const CONFIG = {"versao": "0.7.3", "api": "https://script.google.com/macros/s/AKfycbxQgg9qH5Oa9u6WgzntM-MMcEafrzzEa02Pk6grpxHmdQW6-2g6Zj66_PSb3-2TaNVT/exec"};
+const CONFIG = {"versao": "0.7.4", "api": "https://script.google.com/macros/s/AKfycbxQgg9qH5Oa9u6WgzntM-MMcEafrzzEa02Pk6grpxHmdQW6-2g6Zj66_PSb3-2TaNVT/exec"};
 const LOGOS = {"logo": "data:image/png;base64,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", "iso": "data:image/png;base64,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", "pbqph": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAY0AAABgCAMAAADW1N4LAAABgFBMVEUAAAAVLDwTZa8ClZkqJSLzwwQWLkAAVVUUKzsnIyAnIyACOzwmJSQUKzsUKDgnIyAnIyAnIyEnIyAUKzsUKzsmJB4UKzs6OjoSZK4AqqonIh4AAH89PQAUKzsAAFVVAAABVaooKBf//wAsHBwCnqIdHR0Af7MSZa4AlZkRZK4Af38BlZkClJkmIx7/0AUSZa8BlZk6AADywgXzwwT/qgD2uwAWMEEAlJhVVQD2xgMMKUf1xAQRM0TywgQA//+qqgAmHh7/fwDzwwTzwwQAAP8kJEkSZK8SZbEmIx8Alpa/vwAeHjwQY64Af/8CoaVVVVXvvQX/AAAAO3YnIx8kbbZ/fwAAAD8AP78AVQAfX58mIx8YLkAAMwAUMD4ASEgAZswVb8EAfwAAjpYCl5szADN/AADfvwDuvgPwvwYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABnMn6vAAAAgHRSTlMA/f7++f3+A0vQkAUP0BNPcDGucTAtsAS4A0kCBI4DAwQSARL+CQXbRTgCpMlq/neYBDCNAwn/OAMUDc0PUAEDIQJvrwEGUpKFEgQIGQL/AywBBKoHAgQEAwjAUwUlBwX/AiJ5BQIIT30AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGiqP+MAABaOSURBVHja7V0HgxNHsm55B0mTgzQae5RWEgK89oIX2DUsBhNMMNzZ+M5378LL+f//gldV3T2xJ0gbtPht3wGjmZ4O9XXl7jF79nu2Zdkv3nixlFcPv9+yzZk52/gNs021Hv7lDAcjW5bRoO/gTXPDDnsmu6gyhj+3/uXXX/f39281ln1eft2/9df9W/s/FJpaPmTs8eP7T58+/XgMv5a1/TqDUun3h45ZRZ4Pw365DIdD5zXNotcCi38ajDrFMhoMJVKlMlQPMcW2uThQTPif01yNCmO/+/z27duf3d6sfIb/f5sDBKh//8GTG7y8ug/8UbcGRiedbql0OnYFeRy721EXezSlJV7HUvDM6Y86XUUb3Y49cJTUdTonqhF27GkNgvlJDlLUP9RgYSfV+uztv362bXmTEVYP2fGDG3dvJOXBcR0cTqeqqMgzY8NOp+aNzqjPubwKDHNg170/dRTM1K/CHzAZ9V/X40/lNPPOsKq6yQYnSS2b3d4ajM/usVspGPefZLC4AcD8Tw0cTqezAXmANJ2GYlfiAXf7lZwlOxwUF3tDl117YDayR3aS/aragEY6OJt9fh5oLNn9G6XytBoOp9NMntkmaAB/OMoJ99iHafPL3dEwr64au+wi/lcTjRfs8Q1Fuc+W26GB5HFSOFqh0bVV0sBkwwbGUNOrTZfTK4rGcvlKhcaTxy+WW6IB7JGu1lZoQBmWhJXZ8k0sgyzB2nSJK6aufLcbNJbsqQqMG3cfsO+3RYOIO9sMDdsZbw9GpzvNCKuW7GheQd5YvnhyQ10eV8gqZ6O13haN7ig/ZyUYws5VmLvdQQpHuy67ozpn1dwJGg9VKpyXl+x9CzS4b0y2av7+d0o0Em/arhf+47JhDMbpdIBeY38wtUv9ARyzCjRkd4VXTqY1ltVueOOYvbxbgcarFrxhD8d/nrHxBwxb5GfbFXPNkwYE2Hg86/VMc+YM+3n/2v63rG1b4sBRPyvph9MSHhXCcWoejMdsdur0S45LvxqO3aCxZA+qeKNKVDllkksCKaiTI82o0FTfVpIT3xp1FTapafbGbNyj6NZp0fi1zbEKjax5UHBealTHbtD4nr06CxqJtB6jEO4rFEEBjayo7s2ykYWsJi5J/qlZcPHGcKNg/yZLowINjBjOplXK5orwxvmgIfyDsiIvoDEuTCcn9jIP7IJIURDEZKd5BpLMVc0b0MigHXN8+mgU4OBrvVZSQYVpt0yb3CyJoGZFcHfazXPjuB6NQoc1hHZ2ZFOdIxoFMtqsSW8UYorfqc22fqU8mRXUy7AsHItuZc+0K9yUK4DGe/agyqZ60mxTlQWvkydOExr5FxwVpjXCHdWHXdYc9WjkHtpXS1K9r3DF2/kbJUrlBAE93QSNpK0sie1ery77kVdVTpOkwse2qssrojeOqwXVnzZGI0cIkgNNkqqvWKjDlk5BBR/Vo5HXHMOKWP6OIiMPK9y/VnEqhRRxCjZuey0uYyNF5TOuz9Kd2rkeZ81oZJtPKb1c/vIiTUHvLE51rA5UPV4uz47GrMnCHZYbG7NRKxWuNBxes2Y0+go0XjyUmbedxnBBVn1UgfG0ijUa0MiG20po2EULdWgrTCqnU9bsLcOtZcOhHRoPaWPAq5fHcoeG02ZBmOPzz/09VCjyu//bKvenQGNYL6nMnig8UpEN4iU5imEboye7a6JA3c0l1VJuDHjylHFLMo9GZTl/NFQpjpft8uKbavHcSnfyUUPbGpfNpGqHQE1dRZdNWnzGflmyl8kmjVcf2YsCGqMh38rDi5lcOU6Wtc+Exhv2D5kNPB+z2xTuPqlOwzaiUWvhduxRUuxSCFaR2Kh1NhRGbllVla2m19meTykXnfO5aPLtkji51XQWNH7HMhuqHrL/fvnkxl0qN568rN3As5H3Ny4GALO7mzplN7rG5mmnOOwmvZHPYtnjsqR+8n75p5wWv3A0bn/JDlh+exu7//IBlqfHjC3ZdmjkpYDd22SXQm8jfyDXq70BGrPXdsF5Py6GI+6DAXOZaLzdZ/tfsIMvMnAs1deN+Y0sGk6ODIqoYeUOjg9pqL2IRovSgMasOmo4rELDvDQ0Pv+SdkU/g8FlGOSX74/fL5fvjx8u2wuGHG/0xgXClyPq1Vs+0gV8/miMM1jkwaCosRKNy9Ibt98AFgfPfvzm66/uMPbFs403Y+fQmHEraUybvwdN2aZq5nAqJVXVVoLeeNxSUv1ZDBF6cPLZJtJKu+SNe4z9/gB44quf9m7e/Opbltcfm6IxzRqstmrXSMsNHHaSwyhq8eY9/qcNWjyzub6Qie2xKt64FL3xFkypfUTg2z0sN/e++RH4Y2s0gFpkgg+H/amt3pHRdgcP0H2mcFkGVYkmZzrimn9c73CCtzAk1wA3RXRVuxR2hYZQGEj/O3t7Ao//+JEdHGyNRna3eX6xW736HTylXT9CKLXx/kw8hiB2NJb9k6oF0C3tiFPzBgavL1xSERbcyUjRADy+RvVxcFY0SlsHldmdjC9+6gwLW2oc1jIy0pPxLeSOvJ4pR0aqSrKdCvyNLBp3aedSOzS6W6NxD5W3mE4WDcAD1Ud7de60UwOqzU3FiLrZtxV7PnL5PKVR1U8xn+VzU8O2wvFkNJslFv2D3Abk5YuCR9mvKoMt0bi3zw7SQ4J5NDZUHy12RdupiVSDxszMHQ5K9f6oW6c4si1iR8POFg5nd5pr9vF9WT6q8huVZbpN1BCUd+7cZQENgUdL9eG0sVfVJwZGKgVQVBKF2IVZfidFq2vnNipwq7oZjW6BwsvSjxwaSeC5UP7Z3CKGiwrjD7lzlyU0hPpohUfTaZr8UZWGvHiO9HZPmYk1WU2ceDTo1Gdilad3im7MMikvfrnQXdHk7RWUggINqT7Oigae/Ju1RyMfUpVKYpRjjlkpapvLhXeKmw7q0ejSybamWOQFoXHvr6x8qlyJBoirVng4NRYGbV3ubcAb+S1RfN6mItxVkzBq2MFThGI63FQcnxsaRYVRiwapj4NGceWoIuQ4HH7cuFcjV0YqazWzT0FKpVO7fncbWLUn1YdGKoL4dCJ6aLJWJ8YvAA1SGKpmqtBo5X3k0EjOxlcdjW+UVBmxJA2o4trvK+yqUbfyQE4hwZWc3udfC+iNd8IbKoXRiEYL76MiTgWDU59rbUDjVBUHKe+KLiiPAxUcQ/U+3OwQZ1uY8eeBBngYP1R9hqQODRRXteojF8M1Ralk/gY0TkuetFIPD4pfwBibpl0+3aQ8MWCeNgzx4tGoUBht0BDex7Pt9oxshMa4cMggPWuRz0PQmXDc0TwTbmOPFTIVWeOrIS9++WjcY5lNCBujsbf3096dSjjOgsb4D6nvRCeU8iHFD5mTZnbtSTOzP6o691mb+9sFGrfZrVpF3IgG4PFNVebjDGgUY4D5w2nZc2tj1edJRgOKjg/x20gKFa4+GbV7NN78cIudEY29m3cqdMcZ0OhMsyG30snWrFCZKZyGZKeJ6os8SdT4yqHxZY3OaI1GFXOcBQ0lbdPVfVC51abN+e/ewfmhYV41NL66AN6oLU5NCKsVHBWnMLdB47urxxuXi0a/SLb2X33J651rNM6ORl/lxzujjbhjQLLuGo0zotFVbw6ZtflaWAnS3yQal6c3ulWfC0NL1xl0ujVvTodOGiM56atOmv0mbKoWaHTOA40uJn+qN7HRNiglIDI8nnzG8mTkXLaF27lCaJw0ozGu+8okhbnxM5zjWjzB854WNvxQfLxPjNCT2VwZwwQ0Ts4aGXltnzS3YGY6OtkNGrmPkzotJjab2hVlBM610yLIzcPs/elIfkeJPt2aZCrk50oGaSwyVf7TbbCASfZH9kiMsY6FkrkBf++EN/CzzckXec+htPl880xUeu2c4t5GcTPdlzIs2gGZjwZfWtkRGhuWarndMzdYubmvbuc/wQ26/u8m650naZM91/Xfss4E1j4RNC6pjHc9gGs0yov0Go3rco3GNRrX5RqNazT+H6Ax/22iMT/3yc0/QUB3g4YV+ha/sCx5y3dDec1C1/9Hulj4yb2FsqXc3VVoyWZX8r11JNtPm5JlbVn+Ounfkper2M1WXS2sxSoZea5zPw6bxiTfW1mLddKv+Ce0fNFwFMLzHaHha1ACmIgB/+ou3vLwlmbQZF0db8csYod4cch4BYNmFXgcL93DVeVrQUofagOb89O2QlHhkDfJfPgZBqt0GPoa+ltAPXwF6egHcnR85bpa5reneSlKhibH6QZrqqpb8MPXdGrfMHi9wOATFe3PWawFNBWd34RXV3QZ7iLbFMHY9DjQgAa6ZgAJPRyt7rmAQhDhU81z+W35PGIWjRanqrnwz1rHGc1ZgE8nomGo7cLLPrUWQFt0D+pbQAANm4yBnD78wQUwAYR01w3nUD2WQ7KwA8ONqRksR/AkcLFZ7PY5jEKufKAgPODjDLD2BKpiXwEf8VrTeD34N4JGY2ifGp2IMQHM8L6OywU6PUSG3B6Nb7fdMxLRqOEvD2gFfA2jdREaoG6gHQLh6BpWzoqeAw5rvu4NTlYdxBEs9YBjo+lJw7pOTOASeYEoIRMVsMdDXPW+QCMGICfQq0trFYeD9+g9nW7iAl8z8XRBPKYJXpboG5xNFjo8oL6O+LyoS+DHtRiZhQPgyMA0o5+J2XDwLud2bMfn3LIrNHwrwhEA/ZBB1ri2LJgljDzCmVkgWn0QNfD8iP1NA/7X9ec6/EtzNUiuBFDL0EJDLGLigxVbBMQbfsQ5AK6oAtDBF6LGJxQ4GoeML2nkmRjp44WEOTXtSjRWjFaygcODRRKJJa8jAGt6QLxxJFeZT13DKqKauNoYraiI14MJBtpzHJM3t3DOGmK/UzS4CEYCuyBSNE1I/0AzxCTET1zJsG5iqHyIy9fXDAPruHjXQkiAGI8kGppOvIJNhzrMeCUrANeBXGE/w6OQcEI0gN+CwGVCUh0iO4YCBOoIRkpYWXyJBwSjJ9BH2JBJIlz7RkZSwU/sFlGI+IvaHCa4wgo4DWwIGycYI3prEeJIjNVFo1GlNwKUxCiJdB3ZGgYsCeoRU/9s6Di6AOmrhwiLy5WfT8IEfuEP1OwTmqh4WQ90lHMGweIysaCJnC7iYRXR0ANSWi5dg/BmOTQmqaQiIgbEWAGhL55zJsnoDXw+Q+kF/U4EGoyjcYTsQEvF1zRLoHEEL1shjiSwdoWGsFLQlEBzBGezYJxrSWpZWMVFNLRgQTPSAtLjuDxDIOF/IhrICXoqyXWwZSycrMEtlAkIOS2gCrSaA6IFtTE5miyINpKIHn8FIBeS6h1BRk9JUsGylqOwpDqYg3AygJ1RYrLFEfsjDD3gY3qHFebzyRFV5JLKorlxDqbVBYwyYX+BOYekadiu0NDdUMgWodCCRDPGXH9OND410g/c/kWN4cq1C/dDcVePMloc1RGhsWJpBXZoHJG1m+gNrlRB9MFC53oDCgjzSOeSKBREl5IKlLUlR4HooznnMa7XQxCihngn6fLISmyqrBbnZjVNS2hxj/TgpWjxL6ptKiKpBkyAjgEamD4Ik8DiWOG1gWiBEiZhE4OfCBOZ+PDqEb2K0tpbrNehLluDC/9QJ5vKI7WNFawFqIMYjFk/1kEScZsKLFtX/rum4UBVnwxQ+PtdCL0SUhwNw0e5egij8FfW2hVGLuAT+Oic6GQAGjFarFh7tbaeo2QlqzZeICrwx/O59Q1PwA+EQa9AdYe+R2Z1iEa9uxNJ9Qi9pCMmHSSD/AgvdY/EtYdGikFW0ErImkPdWgTChDI89o4vKB8csEeMJS4WsBqILDJ1jKSCIRwtl8+dGIYvU0AF7sUAXkx8GpInJkwwaPhQE06epXOAPJ27HFYg2GAuXUbUQYFwRmLGH4OaC5i4xrEnYwpXWuLxLsSMd7LXsBA0IJGwdt0kHmG5XiY2sbLYShWXSAMcwgSIfChJWGK9yvfiumHmmoIfPvCjL5pd856IUq7rZ94MY2g2z9xJAMf1ZWzHd+Ps6Cw+I9ePSKlZ0FU+MoMYuMl4cUT++jqG+1uJqN88ZzQmc/X1ecVKJ60jvZPJFm2ex5B3wxuTOZT0xyQSGlPO6NGczSMx30eTaFIkHL1/pCQrtJYSM5LUnYjmGL44SYk5mUTpi7JPVbviSQTNJ+N4NJGNRWLU2cavs03Xub8t0LCMIAg8odQsLzA8n/3MQiMwuK26dgNdPHcNvEtqVih2UIZuYODtFfPh/1zBRu6KYX4E6huGK1S574W8ByNp2oOuDalOPapsyT5hTGlqwg+FouauibfiA8eGQOGv4wXz+CjQVzRi8vbl708JjQk3YXmS4RFGZTURPhfRz1C4q7EIiPKkhUtxajBPha+NsVywYimW+Ah97AX3TOSrPFQSwTsxd4/RaA1lHyK/QfdDsKXDxEUWa0T4Yxjfo1ixwX0PGo1FgxGj8Mm09qVhrvufGhrvNE/m/BAaL/IxsAN/wBcM0Pj21hijEFEhtvK4v0toUMANQ4kLTjKPbkcUXjAwAWGBuahTAsEnWCwed1wcYgQL2lsni5ecYeuQXtGpT1emNSQacx5dNsi3xxhszBboj/Ksk0dhHcxg8NClRzG1Tw2NTBQccz4iPESBDQpAeIJYGOwkCGIKJAjeMMA3QA5ZixCtDlIOMeJ/dLHqKfrlkT+HDVo8BOFncncUgZxwULJ9JlkJzhshOme6QW0EWsTH6lH/ofYO9Do2rEN/Rzx2e2XRqIvhCnGNWYaQUwRTS7DMQl2G13Ut4mgc4bMMGpZAiRawzBlINI6wUYzfWRSxErH7iAeM4HmcuHYYZZnwFZDpcy3QwFhG6IpQYswIHWCL2NMprOVRJPEdjUKn0JeVJI0+Jd4QMVw9QcNDQeFSIhUEBkuyeQEG/pGQGNa2Mnojh4ZP6kJchPQyTzVhOo/kmkADIeXBEOGlxyL6C/In06cl86eiUKiZcVxFLGSVoMHTkR5xRXTF0aiJ4XpenKp0XeMhQg0zDMnyhItJKHgj0I7iIhoWSJAAkAJaxTwFGiRo/JFC1x5IPX2doMFDU4boOUVD1xa6THfLC+CNwPM80s+g+l2fopjwV0grhqPhYuAcbgY+VzjhDtG4eQY04pyBpQexCK+jTqAcNlCZU5dEfkiEDLia4TLhUKBBSlokaRO9wbObvLhSb8QUkM/pDRd327iUoEAVcpTSU+oNNC8M0RIS/i8cVTfhDTLjeLQ/McQ+NUl1mEXDS7Z8aGJngcs1sS8sKLqzpsg55R2iDG9EFADlusQQaQlfp0yVDva/TmYXNBLFmtAtLGdTcdvNyvQ5lzaVNVmgQloDm1BLHtdRbh4Nj/oRgfELQ6P+24QH7N8b0fipKi+O7KDzHUqYnfR5xoKL9RXZmZhSRcgwRanTZcSv0TP5Lyb0xhqzoXNu7keUACd/gyqteRJqDqaAy++JDR3Qs5/zN2hvTiz6lKyzJsJiTmkl7LCQMir0hsjbcQtN52rIIC11RjTeVHzPsPE/40D/xYd61tj7tuKEihUAiaWbtJKRaB/E1XPDB3ahfWMGohUZWNN7ThWe860GfF0TCbh5JHe84S8P6xt4G3z5aA4YeqI78rMtI9PzGn9I/3uR9MlY2jSL4XUPg1hHLHaZjy3hEBYUKbDwbzdkGAWja89nZ4Tj7eflgt/Qa3jvGfvxm69ry1d3Nv8vc6Q5j5Vyn6fFLq5EydbPmvLoIsNU/wdyp3bAExWJtgAAAABJRU5ErkJggg=="};
 /* Central Diário de Obra (Rijo) · v0.7.3 (16/10/2026) · página do app (HTML "app" do API Vobi 05).
  * v0.7.3: aba Atrasos (só escritório): situação do diário de todas as obras, imagem e mensagem para o grupo do WhatsApp.
@@ -835,6 +923,7 @@ const IC = {
   cal: '<rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
   sair: '<path d="M14 4.5h5.5v15H14M10 8l-4 4 4 4M6 12h10"/>',
   painel: '<path d="M4 20V10M10 20V4M16 20v-7M21 20H3"/>',
+  ajustes: '<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.2"/><circle cx="9" cy="17" r="2.2"/>',
   cadeado: '<rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/>',
   pmais: '<circle cx="10" cy="8" r="3.4"/><path d="M3.5 20a6.5 6.5 0 0 1 13 0"/><path d="M19 8v6M16 11h6"/>',
   juntar: '<path d="M7 4v5a5 5 0 0 0 5 5h0a5 5 0 0 0 5-5V4"/><path d="M12 14v6.5M9 17.5l3 3 3-3"/>',
@@ -887,7 +976,7 @@ function erroDe(e) {
 }
 // v0.6.2: leituras repetem sozinhas (3 tentativas) quando a resposta do Google se perde no caminho.
 // Gravações (corrigir, salvar, juntar, subir foto) e o login nunca repetem sozinhos.
-const SRV_LEITURA = { appAcesso: 1, appInicio: 1, appObra: 1, appMes: 1, appMinis: 1, appFoto: 1, appCapas: 1, appColab: 1, appAbrirCorrecao: 1, appSituacao: 1 };
+const SRV_LEITURA = { appGestao: 1, appAcesso: 1, appInicio: 1, appObra: 1, appMes: 1, appMinis: 1, appFoto: 1, appCapas: 1, appColab: 1, appAbrirCorrecao: 1, appSituacao: 1 };
 // v0.7.1: leitura com prazo. Às vezes o Google não devolve a resposta e a bolinha girava para sempre: depois do prazo
 // a leitura é cancelada e tenta de novo (gravações não têm prazo, para não ficar em dúvida se gravou).
 function postarSrv(fn, args) {
@@ -1084,7 +1173,7 @@ function capaImg(o, grande) {
 
 /* ---------- situação do diário (mesma regra do painel: 1 por dia corrido; o de hoje vale até o fim do dia) ---------- */
 function situacao(o) {
-  if (o.encerrada) return { s: 'sem', a: null, txt: 'Encerrada · sem cobrança', fora: true };
+  if (o.encerrada) return { s: 'sem', a: null, txt: (o.desligada ? 'Sem cobrança' : 'Encerrada · sem cobrança') + (o.recebe ? ' · recebe diário' : ''), fora: true };
   if (o.aguardando) return { s: 'sem', a: null, txt: 'Sem cobrança' + (o.etapa ? ' (' + o.etapa + ')' : ''), fora: true };
   if (!o.ultimo) return { s: 'critico', a: null, txt: 'Nenhum diário' };
   const a = o.ultimo.dia >= ONTEM ? 0 : diasEntre(o.ultimo.dia, ONTEM);
@@ -1163,7 +1252,7 @@ function voltar() {
   render(true);
 }
 function atual() { return S.pilha[S.pilha.length - 1] || { v: 'obras', p: {} }; }
-function raizDe(v) { return v === 'relatorios' ? 'relatorios' : v === 'fotos' ? 'fotos' : v === 'atrasos' ? 'atrasos' : 'obras'; }
+function raizDe(v) { return v === 'relatorios' ? 'relatorios' : v === 'fotos' ? 'fotos' : v === 'atrasos' ? 'atrasos' : v === 'gestao' ? 'gestao' : 'obras'; }
 
 function render(subir) {
   const y = window.scrollY;
@@ -1178,7 +1267,7 @@ function render(subir) {
   if (logado) { $('#eu').textContent = iniciais(S.pessoa.nome); $('#cabSub').textContent = S.pessoa.nome + (S.pessoa.obras === '*' ? ' · todas as obras' : ' · ' + plural(S.pessoa.obras.length, 'obra', 'obras')); }
   else $('#cabSub').textContent = 'Relatórios diários das obras';
   const m = $('#main');
-  const fn = { entrar: vEntrar, obras: vObras, obra: vObra, rdo: vRdo, corrigir: vCorrigir, relatorios: vRelatorios, fotos: vFotos, atrasos: vAtrasos }[logado ? a.v : 'entrar'] || vObras;
+  const fn = { entrar: vEntrar, obras: vObras, obra: vObra, rdo: vRdo, corrigir: vCorrigir, relatorios: vRelatorios, fotos: vFotos, atrasos: vAtrasos, gestao: vGestao }[logado ? a.v : 'entrar'] || vObras;
   m.innerHTML = '';
   fn(m, a.p);
   pintarMinis(m);
@@ -1530,7 +1619,8 @@ function obraGeral(c, o, rdos, sit) {
       '<div class="fl-i"><b>' + esc(rotuloDia(f.dia)) + (f.codigo ? ' · nº ' + esc(f.codigo) : '') + ' · ' + esc(tituloFila(f)) + '</b><p>' + esc(textoFila(f)) + '</p>' +
       (f.status === 'aguardando-fotos' ? '<p class="fora">Abra o app 06 no celular com internet para ele terminar de mandar as fotos.</p>' : '') + '</div>').join('') + '</div>' : '') +
     '<div class="sit"><div><div class="l1">' + pilula(o) + (sit.fora ? '' : hojeFeito ? '<span class="tag app">Hoje lançado</span>' : '<span class="tag">Hoje (' + ddmm(HOJE) + ') ainda sem diário</span>') + '</div><div class="l2">' + esc(l2) + '</div></div>' +
-    (pessoaPode(o.codigo) && !o.encerrada ? '<button type="button" class="btn peq pri" id="lancarObra">' + ic('mais') + 'Lançar o de hoje</button>' : '') +
+    (pessoaPode(o.codigo) && podeLancarObra(o) ? '<button type="button" class="btn peq pri" id="lancarObra">' + ic('mais') + 'Lançar o de hoje</button>'
+      : pessoaPode(o.codigo) && ehGestor() && o.id ? '<div class="liberar"><span>Esta obra não recebe diário agora.</span><button type="button" class="btn peq" id="liberarObra">' + ic('mais') + 'Liberar lançamento</button></div>' : '') +
     '<div class="cal" role="group" aria-label="Diários dos últimos 30 dias">' + dias.map((x) => {
       const tem = porDia[x.d];
       const c1 = x.c === '1' || (tem && x.c !== 'h');
@@ -1552,6 +1642,7 @@ function obraGeral(c, o, rdos, sit) {
     (rdos.length ? '<div class="rlista">' + rdos.slice(0, 5).map((r) => linhaRdo(r, false)).join('') + '</div>' : '<div class="vazio"><h3>' + (S.obraCarregada[o.codigo] ? 'Nenhum relatório desta obra na Vobi' : 'Carregando os relatórios…') + '</h3></div>') +
     (fotos.length ? '<button type="button" class="btn" id="tvObra">' + ic('tv') + 'Passar as fotos desta obra na TV</button>' : '');
   const la = $('#lancarObra', c); if (la) la.addEventListener('click', () => abrirLancar(o.codigo));
+  const lb = $('#liberarObra', c); if (lb) lb.addEventListener('click', () => liberarLancamento(o, lb));
   $$('[data-rdo]', c).forEach((b) => b.addEventListener('click', () => ir('rdo', { id: b.dataset.rdo })));
   $$('[data-ir-aba]', c).forEach((b) => b.addEventListener('click', () => { atual().p.aba = b.dataset.irAba; render(); }));
   const nbp = $('#nbPontos', c); if (nbp) nbp.addEventListener('click', () => { const r = $('#revisar'); if (r) r.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
@@ -2499,7 +2590,7 @@ function vAtrasos(m) {
     '<div class="atr-leg">' + [['ok', 'Em dia'], ['atencao', '1–2 dias'], ['atrasado', '3–6 dias'], ['critico', '7+ dias ou nenhum']].map((y) => '<span><i style="background:' + ATR_COR[y[0]] + '"></i>' + y[1] + '</span>').join('') +
     '<span class="mudo">Barra: dias sem diário, cheia a partir de 30</span></div>' +
     (x.fora.length ? '<p class="atr-nota">Sem cobrança nesta fase: ' + esc(atrForaTxt(x)) + '.</p>' : '') +
-    '<p class="atr-nota">Lido da Vobi ' + (x.lidoEm ? 'em ' + esc(horaDe(x.lidoEm)) : '') + '. Responsáveis: aba Engenheiros da planilha do app 06. Para desligar uma obra da cobrança, use o painel antigo (link no menu).</p></section>';
+    '<p class="atr-nota">Lido da Vobi ' + (x.lidoEm ? 'em ' + esc(horaDe(x.lidoEm)) : '') + '. Responsáveis: aba Engenheiros da planilha do app 06. Para ligar ou desligar a cobrança de uma obra, use a aba Gestão (Obras e acessos).</p></section>';
   $$('[data-atr]', m).forEach((b) => b.addEventListener('click', () => ir('obra', { cod: b.dataset.atr })));
   $('#atrImg', m).addEventListener('click', abrirImagemAtr);
   $('#atrMsg', m).addEventListener('click', abrirMensagemAtr);
@@ -2772,6 +2863,211 @@ function abrirImagemAtr() {
 }
 
 /* ---------- camadas: folhas, visualizador, slide ---------- */
+/* ---------- v0.7.4: Obras e acessos (escritório vê; só o gestor altera) ----------
+   Duas chaves por obra: "Recebe diário" (aparece no app de lançamento; aba Obras do app 06) e "Cobrança" (entra na aba
+   Atrasos; mesma configuração do painel antigo). Quem lança em cada obra e as pessoas: aba Engenheiros do app 06. */
+const G = { dados: null, carregando: false, erro: null, aba: 'obras', filtro: 'uso', busca: '', pFiltro: 'ativas', salvando: {}, recarregar: null };
+function podeGestao() { return podeAtrasos(); }
+function ehGestor() { return G.dados ? !!G.dados.gestor : !!(S.pessoa && S.pessoa.gestor); }
+function podeLancarObra(o) { return o.recebe !== undefined ? !!o.recebe : !o.encerrada; }
+function carregarGestao() {
+  if (G.carregando) return;
+  G.carregando = true; G.erro = null;
+  srv('appGestao', S.token).then((j) => { G.dados = j; G.lidoEm = Date.now(); })
+    .catch((e) => { G.erro = e.message; })
+    .finally(() => { G.carregando = false; if (atual().v === 'gestao') render(false); });
+}
+/* Depois de mudar algo, a Central relê as obras por baixo (botão Lançar, Atrasos, responsáveis). */
+function recarregarDepois() { clearTimeout(G.recarregar); G.recarregar = setTimeout(() => { if (D && S.token && !S.ed) carregarTudo(true); }, 1200); }
+function gTagVobi(o) {
+  if (o.vobi === 'ativa') return o.fase ? '<span class="tag">' + esc(o.fase) + '</span>' : '';
+  return '<span class="tag ina">' + (o.vobi === 'encerrada' ? 'Encerrada na Vobi' : 'Fora da listagem da Vobi') + '</span>';
+}
+function gEmUso(o) { return o.recebe.ligado || o.cobranca.ligado; }
+function gGrupo(o) { return gEmUso(o) ? 'uso' : o.vobi === 'ativa' ? 'desl' : 'enc'; }
+function gMeta(o) {
+  const m = [];
+  if (o.cobranca.efetiva) {
+    const st = o.cobranca.status || 'sem', a = o.cobranca.atraso;
+    m.push('<span class="pil ' + esc(st === 'aguardando' ? 'sem' : st) + '"><i></i>' + (st === 'ok' ? 'Em dia' : a == null ? 'Nenhum diário' : plural(a, 'dia', 'dias') + ' sem diário') + '</span>');
+  }
+  if (o.ultimo) m.push('<span>Último: ' + esc(ddmmaa(o.ultimo.dia)) + (o.ultimo.codigo ? ' · nº ' + esc(o.ultimo.codigo) : '') + '</span>');
+  if (o.rdos) m.push('<span>' + plural(o.rdos, 'relatório', 'relatórios') + ' no acervo' + (o.ate && !o.ultimo ? ' até ' + esc(mesAno(o.ate)) : '') + '</span>');
+  if (o.id) m.push('<span>Vobi ' + esc(o.id) + '</span>');
+  return m.join('');
+}
+function gSwitch(o, campo) {
+  const x = o[campo], ed = ehGestor() && x.pode, sal = !!G.salvando[o.k + campo];
+  const titulo = campo === 'recebe' ? 'Recebe diário' : 'Cobrança';
+  let sub;
+  if (campo === 'recebe') sub = !x.pode ? x.motivo : x.ligado ? 'aparece no app de lançamento' : 'fora do app de lançamento';
+  else sub = !x.pode ? x.motivo : x.ligado ? (x.efetiva ? 'entra na aba Atrasos' : x.motivo || 'ligada') : (x.motivo || 'fora da aba Atrasos');
+  return '<label class="sw' + (x.ligado ? ' on' : '') + (ed ? '' : ' dis') + (sal ? ' salvando' : '') + '"><input type="checkbox" role="switch" data-sw="' + campo + '" data-k="' + esc(o.k) + '"' +
+    (x.ligado ? ' checked' : '') + (ed && !sal ? '' : ' disabled') + ' aria-label="' + esc(titulo + ' · ' + o.codigo) + '"><span class="tr"></span><span><b>' + titulo + '</b><small>' + esc(sub) + '</small></span></label>';
+}
+function gObraCard(o) {
+  const escrit = (G.dados.pessoas || []).filter((p) => p.ativo && p.tudo).length;
+  const alertas = [];
+  if (o.cobranca.efetiva && !o.recebe.ligado) alertas.push('Cobrada, mas não recebe diário: ninguém consegue lançar pelo app.');
+  const resp = o.responsaveis.length ? o.responsaveis.map((n) => '<span class="tag">' + esc(n) + '</span>').join('') : '<span class="g-info">Só o escritório' + (escrit ? ' (' + escrit + ')' : '') + '</span>';
+  return '<div class="g-ob" data-ob="' + esc(o.k) + '"><div class="t"><b>' + esc(o.codigo) + '</b><span class="n">' + esc(o.nome) + '</span>' + gTagVobi(o) + '</div>' +
+    (gMeta(o) ? '<div class="m">' + gMeta(o) + '</div>' : '') +
+    '<div class="g-sws">' + gSwitch(o, 'recebe') + gSwitch(o, 'cobranca') + '</div>' +
+    '<div class="g-resp"><span class="rt">Quem lança:</span>' + resp + (ehGestor() ? '<button type="button" class="link" data-resp="' + esc(o.k) + '">' + ic('lapis') + 'Escolher</button>' : '') + '</div>' +
+    alertas.map((a) => '<div class="g-alerta">' + ic('alerta') + '<span>' + esc(a) + '</span></div>').join('') + '</div>';
+}
+function gPessoaLinha(p) {
+  const tags = [];
+  if (!p.ativo) tags.push('<span class="tag ina">Inativa</span>');
+  if (p.tudo) tags.push('<span class="tag esc">Escritório</span>');
+  if (p.gestor) tags.push('<span class="tag app">Altera acessos</span>');
+  if (!p.celular) tags.push('<span class="tag atn">Sem celular</span>');
+  if (!p.entrou) tags.push('<span class="tag">Nunca entrou</span>');
+  const sub = p.tudo ? 'Todas as obras' : p.obras.length ? p.obras.join(' · ') : 'Nenhuma obra';
+  const acesso = p.ultimoAcesso ? ' · último acesso ' + horaDe(p.ultimoAcesso) : '';
+  const tag = ehGestor() ? 'button type="button"' : 'div';
+  return '<' + tag + ' class="g-p' + (p.ativo ? '' : ' ina') + '" data-p="' + esc(p.row) + '"><span class="eu">' + esc(iniciais(p.nome)) + '</span><span class="i"><b>' + esc(p.nome) + (p.eu ? ' (você)' : '') + '</b><small>' + esc(sub + acesso) + '</small></span>' +
+    '<span class="tg">' + tags.join('') + '</span></' + tag.split(' ')[0] + '>';
+}
+function vGestao(m) {
+  if (!podeGestao()) { m.innerHTML = '<div class="vazio"><h3>Só para o escritório</h3><p>Obras e acessos aparece para quem tem acesso a todas as obras.</p></div>'; return; }
+  if (!G.dados) {
+    if (!G.carregando && !G.erro) carregarGestao();
+    m.innerHTML = G.erro ? erroHtml(G.erro, 'Tentar de novo') : carregandoHtml('Lendo as obras e quem tem acesso…');
+    const b = $('#tentarDeNovo', m); if (b) b.addEventListener('click', () => { G.erro = null; render(false); });
+    return;
+  }
+  const g = G.dados, gest = ehGestor();
+  const obras = g.obras.slice().sort((a, b) => a.codigo.localeCompare(b.codigo, 'pt-BR', { numeric: true }) || String(a.k).localeCompare(String(b.k)));
+  const conta = { uso: 0, desl: 0, enc: 0, todas: obras.length };
+  obras.forEach((o) => { conta[gGrupo(o)]++; });
+  const q = G.busca.trim().toLowerCase();
+  const lista = obras.filter((o) => (G.filtro === 'todas' || gGrupo(o) === G.filtro) && (!q || (o.codigo + ' ' + o.nome + ' ' + o.responsaveis.join(' ')).toLowerCase().indexOf(q) >= 0));
+  const pes = g.pessoas.filter((p) => (G.pFiltro === 'ativas') === p.ativo);
+  const nAtivas = g.pessoas.filter((p) => p.ativo).length;
+  let corpo = '';
+  if (G.aba === 'obras') {
+    corpo = '<div class="ges-filtro"><div class="busca">' + ic('busca') + '<input id="gBusca" type="search" placeholder="Buscar obra, código ou pessoa" value="' + esc(G.busca) + '" aria-label="Buscar obra"></div>' +
+      '<div class="chips" role="group" aria-label="Filtro">' + [['uso', 'Em uso'], ['desl', 'Desligadas'], ['enc', 'Encerradas'], ['todas', 'Todas']].map((x) => '<button type="button" class="chip" data-gf="' + x[0] + '" aria-pressed="' + (G.filtro === x[0]) + '">' + x[1] + ' <b>' + conta[x[0]] + '</b></button>').join('') + '</div></div>' +
+      (lista.length ? '<div class="g-lista">' + lista.map(gObraCard).join('') + '</div>' : '<div class="vazio"><h3>Nenhuma obra aqui</h3><p>Troque o filtro ou a busca.</p></div>') +
+      '<p class="nota">Em uso: recebe diário ou é cobrada. A cobrança vale só na fase Obra da Vobi (Pré-Obra e Pós-Obra ficam sem cobrança). Situação lida da Vobi ' + (g.painelEm ? 'em ' + esc(horaDe(g.painelEm)) : '') + '.</p>';
+  } else if (G.aba === 'pessoas') {
+    corpo = '<div class="chips" role="group" aria-label="Filtro">' + [['ativas', 'Com acesso', nAtivas], ['inativas', 'Sem acesso', g.pessoas.length - nAtivas]].map((x) => '<button type="button" class="chip" data-pf="' + x[0] + '" aria-pressed="' + (G.pFiltro === x[0]) + '">' + x[1] + ' <b>' + x[2] + '</b></button>').join('') + '</div>' +
+      (pes.length ? '<div class="g-lista">' + pes.map(gPessoaLinha).join('') + '</div>' : '<div class="vazio"><h3>Ninguém aqui</h3></div>') +
+      '<p class="nota">Cada pessoa entra na Central e no app de lançamento escolhendo o nome e digitando os 4 últimos números do celular. Escritório vê e lança em todas as obras. Lista: aba Engenheiros da planilha do app 06.' +
+      (g.codigosSemObra && g.codigosSemObra.length ? ' Códigos na lista sem obra na Vobi: ' + esc(g.codigosSemObra.join(', ')) + '.' : '') + '</p>';
+  } else {
+    corpo = g.historico.length ? '<div class="g-hist">' + g.historico.map((h) => '<div><span>' + esc(h.txt) + '</span><small>' + esc(horaDe(h.em)) + ' · ' + esc(h.por) + '</small></div>').join('') + '</div>'
+      : '<div class="vazio"><h3>Nada mudou por aqui ainda</h3><p>As mudanças feitas nesta tela aparecem aqui, com quem e quando.</p></div>';
+  }
+  m.innerHTML = '<section class="vista ges"><div class="topo"><div><h1>Obras e acessos</h1><p>Quais obras recebem diário, quais são cobradas e quem lança em cada uma.</p></div>' +
+    (gest ? '<button type="button" class="btn pri" id="gNova">' + ic('pmais') + 'Cadastrar pessoa</button>' : '') + '</div>' +
+    (gest ? '' : '<div class="aviso-g">' + ic('cadeado') + '<span>Só ' + esc((g.gestores || []).join(', ')) + ' altera obras e acessos. Você vê como está.</span></div>') +
+    '<div class="ges-tabs" role="tablist">' + [['obras', 'Obras', g.obras.length], ['pessoas', 'Pessoas', nAtivas], ['historico', 'Histórico', null]].map((x) => '<button type="button" role="tab" data-ga="' + x[0] + '" aria-selected="' + (G.aba === x[0]) + '">' + x[1] + (x[2] != null ? ' <b>' + x[2] + '</b>' : '') + '</button>').join('') + '</div>' +
+    corpo + '</section>';
+  $$('[data-ga]', m).forEach((b) => b.addEventListener('click', () => { G.aba = b.dataset.ga; render(false); }));
+  $$('[data-gf]', m).forEach((b) => b.addEventListener('click', () => { G.filtro = b.dataset.gf; render(false); }));
+  $$('[data-pf]', m).forEach((b) => b.addEventListener('click', () => { G.pFiltro = b.dataset.pf; render(false); }));
+  const bu = $('#gBusca', m);
+  if (bu) bu.addEventListener('input', () => { G.busca = bu.value; const pos = bu.selectionStart; render(false); const n = $('#gBusca'); n.focus(); try { n.setSelectionRange(pos, pos); } catch (e) { /* */ } });
+  const nv = $('#gNova', m); if (nv) nv.addEventListener('click', () => abrirPessoaG(null));
+  $$('[data-sw]', m).forEach((inp) => inp.addEventListener('change', () => mudarChaveG(inp.dataset.k, inp.dataset.sw, inp.checked, inp)));
+  $$('[data-resp]', m).forEach((b) => b.addEventListener('click', () => abrirRespG(b.dataset.resp)));
+  if (gest) $$('button.g-p[data-p]', m).forEach((b) => b.addEventListener('click', () => abrirPessoaG(g.pessoas.find((p) => String(p.row) === b.dataset.p))));
+}
+function aplicarGestao(r) {
+  G.dados = r; G.lidoEm = Date.now();
+  if (r.mensagem && r.mensagem !== 'Nada mudou.') recarregarDepois();
+  if (r.mensagem) toast(r.mensagem);
+}
+function mudarChaveG(k, campo, valor, inp) {
+  const o = G.dados.obras.find((x) => x.k === k);
+  if (!o) return;
+  const seguir = () => {
+    G.salvando[k + campo] = true; render(false);
+    srv('appGestaoObra', S.token, { k, campo, valor }).then(aplicarGestao)
+      .catch((e) => toast('Não gravou: ' + e.message))
+      .finally(() => { delete G.salvando[k + campo]; if (atual().v === 'gestao') render(false); });
+  };
+  if (campo === 'recebe' && !valor) {
+    if (inp) inp.checked = true;
+    const v = camada('<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="gcT"><h2 id="gcT">Desligar o lançamento da ' + esc(o.codigo) + '?</h2>' +
+      '<p class="d">A obra sai do app de lançamento. Diário que alguém já guardou no celular para esta obra não consegue mais ser enviado. Os relatórios que já estão na Vobi continuam aqui.</p>' +
+      '<div class="acoes"><button type="button" class="btn" id="gcN">Cancelar</button><button type="button" class="btn pri" id="gcS">Desligar</button></div></div>');
+    $('#gcN', v).addEventListener('click', fecharCamada);
+    $('#gcS', v).addEventListener('click', () => { fecharCamada(); seguir(); });
+    return;
+  }
+  seguir();
+}
+function abrirRespG(k) {
+  const o = G.dados.obras.find((x) => x.k === k);
+  if (!o) return;
+  const pes = G.dados.pessoas.filter((p) => !p.tudo && (p.ativo || p.obras.indexOf(o.codigo) >= 0));
+  const escrit = G.dados.pessoas.filter((p) => p.tudo && p.ativo).map((p) => p.nome);
+  const marcado = (p) => p.obras.indexOf(o.codigo) >= 0;
+  const v = camada('<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="grT"><h2 id="grT">Quem lança na ' + esc(o.codigo) + '</h2>' +
+    '<p class="d">' + esc(o.nome) + '. Quem estiver marcado vê esta obra na Central e lança e corrige o diário dela pelo app.</p>' +
+    (o.recebe.ligado ? '' : '<div class="g-alerta">' + ic('alerta') + '<span>Esta obra não recebe diário agora: ela só aparece no app de lançamento com a chave "Recebe diário" ligada.</span></div>') +
+    '<div class="g-cx">' + (pes.length ? pes.map((p) => '<label class="chk' + (p.ativo ? '' : ' ina') + '"><input type="checkbox" data-rn="' + esc(p.nome) + '"' + (marcado(p) ? ' checked' : '') + '><span><b>' + esc(p.nome) + (p.ativo ? '' : ' · inativa') + '</b><small>' +
+      esc(p.obras.filter((c) => c !== o.codigo).join(' · ') || 'nenhuma outra obra') + '</small></span></label>').join('') : '<p class="fora" style="padding:10px 0">Nenhuma pessoa cadastrada fora do escritório.</p>') + '</div>' +
+    (escrit.length ? '<p class="fora">Escritório (lança em todas): ' + esc(escrit.join(', ')) + '.</p>' : '') +
+    '<p class="erro-g" id="grE" hidden></p>' +
+    '<div class="acoes"><button type="button" class="btn" id="grN">Cancelar</button><button type="button" class="btn pri" id="grS">Salvar</button></div></div>');
+  $('#grN', v).addEventListener('click', fecharCamada);
+  $('#grS', v).addEventListener('click', () => {
+    const nomes = $$('[data-rn]', v).filter((i) => i.checked).map((i) => i.dataset.rn);
+    const b = $('#grS', v); b.disabled = true; b.textContent = 'Gravando…'; v.dataset.trava = '1';
+    srv('appGestaoResponsaveis', S.token, { codigo: o.codigo, nomes }).then((r) => { fecharCamada(); aplicarGestao(r); render(false); })
+      .catch((e) => { delete v.dataset.trava; b.disabled = false; b.textContent = 'Salvar'; const er = $('#grE', v); er.textContent = e.message; er.hidden = false; });
+  });
+}
+function abrirPessoaG(p) {
+  const nova = !p;
+  const obras = G.dados.obras.slice().sort((a, b) => a.codigo.localeCompare(b.codigo, 'pt-BR', { numeric: true }));
+  const vistos = {}, unicas = obras.filter((o) => { if (vistos[o.codigo]) return false; vistos[o.codigo] = true; return true; });
+  const tem = (c) => !!p && p.obras.indexOf(c) >= 0;
+  const principais = unicas.filter((o) => o.recebe.ligado || tem(o.codigo)), outras = unicas.filter((o) => !(o.recebe.ligado || tem(o.codigo)));
+  const linhaObra = (o) => '<label class="chk"><input type="checkbox" data-po="' + esc(o.codigo) + '"' + (tem(o.codigo) ? ' checked' : '') + '><span><b>' + esc(o.codigo) + ' · ' + esc(o.nome) + '</b><small>' +
+    esc(o.recebe.ligado ? 'recebe diário' : 'não recebe diário agora') + (o.responsaveis.length ? ' · ' + o.responsaveis.join(', ') : '') + '</small></span></label>';
+  const eu = !!(p && p.eu);
+  const v = camada('<div class="sheet larga" role="dialog" aria-modal="true" aria-labelledby="gpT"><h2 id="gpT">' + (nova ? 'Cadastrar pessoa' : esc(p.nome)) + '</h2>' +
+    '<p class="d">' + (nova ? 'Ela entra na Central e no app de lançamento escolhendo o nome na lista e digitando os 4 últimos números do celular.' : (p.entrou ? 'Já entrou nos apps.' : 'Ainda não entrou nos apps.') + ' O nome não muda por aqui: ele é o login e aparece nos diários.') + '</p>' +
+    (nova ? '<div class="campo"><label for="gpN">Nome (como vai aparecer na lista para entrar)</label><input type="text" class="in" id="gpN" maxlength="80" autocomplete="off" placeholder="Ex.: Fulano de Tal"></div>' : '') +
+    '<div class="campo"><label for="gpC">Celular com DDD</label><input type="tel" class="in" id="gpC" inputmode="numeric" autocomplete="off" placeholder="' + (nova ? '(87) 99999-9999' : (p.celular ? 'Cadastrado · digite só para trocar' : 'Não cadastrado: sem ele a pessoa não entra')) + '"></div>' +
+    (nova ? '' : '<label class="sw' + (p.ativo ? ' on' : '') + (eu ? ' dis' : '') + '" id="gpAw"><input type="checkbox" role="switch" id="gpA"' + (p.ativo ? ' checked' : '') + (eu ? ' disabled' : '') + '><span class="tr"></span><span><b>Acesso ativo</b><small>' + (eu ? 'é o seu acesso' : 'desligado, a pessoa não entra em nenhum dos dois apps; o cadastro continua') + '</small></span></label>') +
+    '<label class="sw' + (p && p.tudo ? ' on' : '') + (eu ? ' dis' : '') + '" id="gpTw"><input type="checkbox" role="switch" id="gpTd"' + (p && p.tudo ? ' checked' : '') + (eu ? ' disabled' : '') + '><span class="tr"></span><span><b>Escritório: todas as obras</b><small>vê todas, lança em todas e vê a aba Atrasos</small></span></label>' +
+    '<div class="campo" id="gpOw"' + (p && p.tudo ? ' hidden' : '') + '><span class="lb">Obras em que lança</span><div class="g-cx">' + (principais.length ? principais.map(linhaObra).join('') : '<p class="fora" style="padding:8px 0">Nenhuma obra recebendo diário agora.</p>') +
+    (outras.length ? '<div class="sub" id="gpOt" hidden>Outras obras</div><div id="gpOl" hidden>' + outras.map(linhaObra).join('') + '</div>' : '') + '</div>' +
+    (outras.length ? '<button type="button" class="link g-mais" id="gpMais">Mostrar as outras obras (' + outras.length + ')</button>' : '') + '</div>' +
+    '<p class="erro-g" id="gpE" hidden></p>' +
+    '<div class="acoes"><button type="button" class="btn" id="gpX">Cancelar</button><button type="button" class="btn pri" id="gpS">' + (nova ? 'Cadastrar' : 'Salvar') + '</button></div></div>');
+  const tel = $('#gpC', v); tel.addEventListener('input', () => { tel.value = mascTel(tel.value); });
+  const td = $('#gpTd', v);
+  td.addEventListener('change', () => { $('#gpOw', v).hidden = td.checked; $('#gpTw', v).classList.toggle('on', td.checked); });
+  const at = $('#gpA', v); if (at) at.addEventListener('change', () => { $('#gpAw', v).classList.toggle('on', at.checked); });
+  const mais = $('#gpMais', v); if (mais) mais.addEventListener('click', () => { $('#gpOt', v).hidden = false; $('#gpOl', v).hidden = false; mais.hidden = true; });
+  $('#gpX', v).addEventListener('click', fecharCamada);
+  $('#gpS', v).addEventListener('click', () => {
+    const er = $('#gpE', v), dig = tel.value.replace(/\D/g, '');
+    const nome = nova ? $('#gpN', v).value.trim().replace(/\s+/g, ' ') : p.nome;
+    const falha = (t) => { er.textContent = t; er.hidden = false; };
+    if (nova && nome.length < 3) return falha('Escreva o nome da pessoa.');
+    if ((nova || dig) && dig.length !== 10 && dig.length !== 11) return falha('Celular com DDD: 10 ou 11 números.');
+    const dados = { row: nova ? null : p.row, nome, celular: dig, tudo: td.checked, obras: td.checked ? [] : $$('[data-po]', v).filter((i) => i.checked).map((i) => i.dataset.po), ativo: at ? at.checked : true };
+    const b = $('#gpS', v); b.disabled = true; b.textContent = 'Gravando…'; er.hidden = true; v.dataset.trava = '1';
+    srv('appGestaoPessoa', S.token, dados).then((r) => { fecharCamada(); G.aba = 'pessoas'; if (!nova && !dados.ativo) G.pFiltro = 'inativas'; aplicarGestao(r); render(false); })
+      .catch((e) => { delete v.dataset.trava; b.disabled = false; b.textContent = nova ? 'Cadastrar' : 'Salvar'; falha(e.message); });
+  });
+}
+/* Na obra: o gestor libera o lançamento de uma obra desligada/encerrada sem sair da página. */
+function liberarLancamento(o, botao) {
+  if (!o.id) { ir('gestao', {}, { raiz: true }); return; }
+  botao.disabled = true; botao.textContent = 'Liberando…';
+  srv('appGestaoObra', S.token, { k: 'v' + o.id, campo: 'recebe', valor: true }).then((r) => {
+    G.dados = r; o.recebe = true; toast(r.mensagem || 'Lançamento liberado.'); render(false); recarregarDepois();
+  }).catch((e) => { toast('Não liberou: ' + e.message); botao.disabled = false; botao.textContent = 'Liberar lançamento'; });
+}
 function camada(html) {
   const c = $('#camada');
   c.innerHTML = '<div class="veu">' + html + '</div>';
@@ -2787,7 +3083,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 function abrirLancar(codPre) {
-  const minhas = minhasObras().filter((o) => !o.encerrada);
+  const minhas = minhasObras().filter(podeLancarObra);
   let esc1 = codPre || (minhas[0] && minhas[0].codigo);
   const link = D.links && D.links.lancar;
   const v = camada('<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="lcT"><h2 id="lcT">Lançar o diário de hoje</h2>' +
@@ -2812,17 +3108,19 @@ function abrirMenu() {
   const painel = D.links && D.links.painel;
   const v = camada('<div class="sheet" role="dialog" aria-modal="true"><div style="display:flex;gap:12px;align-items:center"><span class="eu">' + esc(iniciais(p.nome)) + '</span><div><h2>' + esc(p.nome) + '</h2><p class="d">' + (p.obras === '*' ? 'Todas as obras' : esc(p.obras.join(' · '))) + '</p></div></div>' +
     '<div class="menu-l"><button type="button" id="mnTv">' + ic('tv') + 'Passar as fotos na TV<small>slide em tela cheia</small></button>' +
-    (painel ? '<a href="' + esc(painel) + '" target="_blank" rel="noopener" id="mnPainel">' + ic('painel') + 'Painel antigo<small>desligar obras da cobrança</small></a>' : '') +
+    (painel ? '<a href="' + esc(painel) + '" target="_blank" rel="noopener" id="mnPainel">' + ic('painel') + 'Painel antigo<small>versão anterior</small></a>' : '') +
+    (p.obras === '*' ? '<button type="button" id="mnGes">' + ic('ajustes') + 'Obras e acessos<small>ligar obras e quem lança</small></button>' : '') +
     '<button type="button" id="mnPdf">' + ic('pdf') + 'Exportar relatórios em PDF<small>um período, em ZIP</small></button>' +
     '<button type="button" id="mnAtu">' + ic('atualizar') + 'Atualizar agora<small>relê os diários e a equipe</small></button>' +
     '<button type="button" id="mnTroca">' + ic('sair') + 'Trocar pessoa</button></div><p class="fora">Central Diário de Obra · v' + esc(CFG.versao || '') + (D.versao ? ' · servidor ' + esc(D.versao) : '') + '</p></div>');
   $('#mnTv', v).addEventListener('click', () => { fecharCamada(); tvGeral(); });
   $('#mnPdf', v).addEventListener('click', () => { fecharCamada(); abrirExportar(); });
-  $('#mnAtu', v).addEventListener('click', () => { fecharCamada(); toast('Atualizando…'); carregarTudo(true); });
+  $('#mnAtu', v).addEventListener('click', () => { fecharCamada(); toast('Atualizando…'); G.dados = null; carregarTudo(true); });
+  const mg = $('#mnGes', v); if (mg) mg.addEventListener('click', () => { fecharCamada(); ir('gestao', {}, { raiz: true }); });
   $('#mnTroca', v).addEventListener('click', () => { fecharCamada(); sair(); });
 }
 function sair(msg) {
-  S.pessoa = null; S.token = null; S.ed = null; D = null; S.pendentes = {}; S.mesesLidos = {}; S.doCache = null; PDFF.clear(); clearTimeout(S.vigia);
+  S.pessoa = null; S.token = null; S.ed = null; D = null; G.dados = null; G.erro = null; S.pendentes = {}; S.mesesLidos = {}; S.doCache = null; PDFF.clear(); clearTimeout(S.vigia);
   guardar(TK, null); guardar(CK, null); atualizando(false);
   S.pilha = [{ v: 'entrar', p: {} }];
   fecharCamada(); render();
